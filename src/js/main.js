@@ -23,14 +23,13 @@ function getEvent(ev) {
     return;
   }
   const form = ev.target;
-  console.log(form);
-    const searchQuery = form.elements.searchQuery.value;
+  const searchQuery = form.elements.searchQuery.value;
   
   try {
     API.getRequest(searchQuery.trim(), page)
       .then(ev => {
-         Notiflix.Notify.success(`Hooray! We found ${ev.data.totalHits} images.`);
         createGallery(ev)
+        Notiflix.Notify.success(`Hooray! We found ${ev.data.totalHits} images.`);
       })
       .catch(errorMassage)
   }
